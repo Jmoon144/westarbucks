@@ -15,14 +15,14 @@ class Category(models.Model):
         db_table='categories'
 
 class Nutrition(models.Model):
-    one_serving_kcal = models.DecimalField(max_digits=6, decimal_places=2)
-    sodium_mg = models.DecimalField(max_digits=6, decimal_places=2)
-    saturated_fat_g = models.DecimalField(max_digits=6, decimal_places=2)
-    sugars_g = models.DecimalField(max_digits=6, decimal_places=2)
-    protein_g = models.DecimalField(max_digits=6, decimal_places=2)
-    caffeine_mg = models.DecimalField(max_digits=6, decimal_places=2)
-    size_ml = models.CharField(max_length=45)
-    size_fluid_ounce = models.CharField(max_length=45)
+    one_serving_kcal = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    sodium_mg = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    saturated_fat_g = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    sugars_g = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    protein_g = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    caffeine_mg = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    size_ml = models.CharField(max_length=45, null=True)
+    size_fluid_ounce = models.CharField(max_length=45, null=True)
     class Meta:
         db_table='nutritions'
 
@@ -37,7 +37,7 @@ class Product(models.Model):
         db_table='products'
 
 class Image(models.Model):
-    image_url = models.CharField(max_length=45)
+    image_url = models.CharField(max_length=200)
     products = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
